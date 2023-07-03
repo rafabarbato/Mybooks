@@ -1,3 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 @import url("https://fonts.googleapis.com/css2?family=Karla:wght@200;400&display=swap");
 
 * {
@@ -21,6 +24,9 @@ body {
   padding: 1rem;
 }
 
+article h1 {
+  margin: 1rem 0;
+}
 article h1 {
   margin: 1rem 0;
 }
