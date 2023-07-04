@@ -3,10 +3,10 @@ import { ButtonPrimary } from '../Buttons/ButtonPrimary'
 import { Icon } from '@iconify/react';
 export const Navbar = () => {
     return (
-        <header className='bg-white shadow-md h-auto w-full py-1 fixed'>
+        <header className='bg-white shadow-md h-auto w-full py-1 fixed z-40'>
             <nav className=' flex main_container justify-between'>
                 <div className='flex items-center'>
-                    <img src="/svg/logo.svg" alt="logo mybooks" className='w-56' />
+                    <img src="/svg/logo.svg" alt="logo mybooks" className='w-44' />
                     <input type="text" className='rounded-3xl border h-10 bg-white' />
                 </div>
                 <div className='flex items-center space-x-4'>
