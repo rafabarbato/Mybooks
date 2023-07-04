@@ -1,4 +1,3 @@
-import React from 'react'
 import { ButtonPrimary } from '../Buttons/ButtonPrimary'
 import { Icon } from '@iconify/react';
 export const Navbar = () => {
@@ -7,7 +6,7 @@ export const Navbar = () => {
             <nav className=' flex main_container justify-between'>
                 <div className='flex items-center'>
                     <img src="/svg/logo.svg" alt="logo mybooks" className='w-44' />
-                    <input type="text" className='rounded-3xl border h-10 bg-white' />
+                    <input type="text" className='rounded-3xl px-4 bg-white border h-10' />
                 </div>
                 <div className='flex items-center space-x-4'>
                     <ButtonPrimary text='Cadastrar-se | Login' />
