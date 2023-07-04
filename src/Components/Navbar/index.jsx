@@ -1,0 +1,19 @@
+import React from 'react'
+import { ButtonPrimary } from '../Buttons/ButtonPrimary'
+import { Icon } from '@iconify/react';
+export const Navbar = () => {
+    return (
+        <header className='bg-white shadow-md h-auto w-full py-1 fixed'>
+            <nav className=' flex main_container justify-between'>
+                <div className='flex items-center'>
+                    <img src="/svg/logo.svg" alt="logo mybooks" className='w-56' />
+                    <input type="text" className='rounded-3xl border h-10 bg-white' />
+                </div>
+                <div className='flex items-center space-x-4'>
+                    <ButtonPrimary text='Cadastrar-se | Login' />
+                    <Icon icon="basil:user-solid" className='w-12 h-12 border rounded-full  p-1' />
+                </div>
+            </nav>
+        </header>
+    )
+}
