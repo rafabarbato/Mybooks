@@ -4,7 +4,7 @@ export const Navbar = () => {
     return (
         <header className='bg-white shadow-md h-auto w-full py-1 fixed z-40'>
             <nav className=' flex main_container justify-between'>
-                <div className='flex items-center'>
+                <div className='flex items-center justify-items-start'>
                     <img src="/svg/logo.svg" alt="logo mybooks" className='w-44' />
                     <input type="text" className='rounded-3xl px-4 bg-white border h-10' />
                 </div>

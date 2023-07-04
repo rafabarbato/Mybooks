@@ -40,23 +40,23 @@ export const SectionHomeContent = () => {
 
                 <Swiper slidesPerView={8} spaceBetween={12}>
                     <SwiperSlide className='flex flex-col'> <div className='aspect-[55/90] object-contain'><label htmlFor="my_modal_7" className="btn"><img src="/img/books/a_vida_mentirosa_dos_adultos.png" alt="livros para crianças" className=' w-full h-full' /></label></div><div className='flex flex-col'>
-                        <strong className='text-gray-900 mt-1 text-base' title="A vida Mentirosa dos Adultos">{limitarCaracteres('A Vida Mentirosa dos Adultos', 14)}</strong><p>William Martins</p><p><RatingsStar count={5}/> </p></div> </SwiperSlide>
+                        <strong className='text-gray-900 mt-1 text-base' title="A vida Mentirosa dos Adultos">{limitarCaracteres('A Vida Mentirosa dos Adultos', 28)}</strong><p>William Martins</p><p><RatingsStar count={1}/> </p></div> </SwiperSlide>
                     <SwiperSlide className='flex flex-col'> <div className='aspect-[55/90] object-contain'><img src="/img/books/ultimo_turno.png" alt="livros para crianças" className=' w-full h-full' /></div><div className='flex flex-col'>
-                        <strong className='text-gray-900 mt-1 text-base'>{limitarCaracteres('Último Turno', 14)}</strong><p>William Martins</p><p><RatingsStar count={2}/> </p></div> </SwiperSlide>
+                        <strong className='text-gray-900 mt-1 text-base'>{limitarCaracteres('Último Turno', 14)}</strong><p>William Martins</p><p><RatingsStar count={2}/></p></div> </SwiperSlide>
                     <SwiperSlide className='flex flex-col'> <div className='aspect-[55/90] object-contain'><img src="/img/books/o_poder_do_habito.png" alt="livros para crianças" className=' w-full h-full' /></div><div className='flex flex-col'>
-                        <strong className='text-gray-900 mt-1 text-base'>O Poder do Hábito</strong><p>Arthur Rocha</p><p><RatingsStar count={2}/> </p></div> </SwiperSlide>
+                        <strong className='text-gray-900 mt-1 text-base'>O Poder do Hábito</strong><p>Arthur Rocha</p><p><RatingsStar count={3}/> </p></div> </SwiperSlide>
                     <SwiperSlide className='flex flex-col'> <div className='aspect-[55/90] object-contain'><img src="/img/books/rainhas_da_noite.png" alt="livros para crianças" className=' w-full h-full' /></div><div className='flex flex-col'>
-                        <strong className='text-gray-900 mt-1 text-base'>A Rainha da noite</strong></div> </SwiperSlide>
+                        <strong className='text-gray-900 mt-1 text-base'>A Rainha da noite</strong><p>Arthur Rocha</p><p><RatingsStar count={4}/> </p></div> </SwiperSlide>
                     <SwiperSlide className='flex flex-col'> <div className='aspect-[55/90] object-contain'><img src="/img/books/os_oito_vestidos_dior.png" alt="livros para crianças" className=' w-full h-full' /></div><div className='flex flex-col'>
-                        <strong className='text-gray-900 mt-1 text-base'>A vida mentirosa dos adultos</strong></div> </SwiperSlide>
+                        <strong className='text-gray-900 mt-1 text-base'>A vida mentirosa dos adultos</strong><p>Rafael Barbato</p><p><RatingsStar count={3}/></p></div> </SwiperSlide>
                     <SwiperSlide className='flex flex-col'> <div className='aspect-[55/90] object-contain'><img src="/img/books/nunca_vi_a_chuva.png" alt="livros para crianças" className=' w-full h-full' /></div><div className='flex flex-col'>
-                        <strong className='text-gray-900 mt-1 text-base'>A vida mentirosa dos adultos</strong></div> </SwiperSlide>
+                        <strong className='text-gray-900 mt-1 text-base'>A vida mentirosa dos adultos</strong><p>Rafael Barbato</p><p><RatingsStar count={4}/></p></div> </SwiperSlide>
                     <SwiperSlide className='flex flex-col'> <div className='aspect-[55/90] object-contain'><img src="/img/books/a_vida_mentirosa_dos_adultos.png" alt="livros para crianças" className=' w-full h-full' /></div><div className='flex flex-col'>
-                        <strong className='text-gray-900 mt-1 text-base'>A vida mentirosa dos adultos</strong></div> </SwiperSlide>
+                        <strong className='text-gray-900 mt-1 text-base'>A vida mentirosa dos adultos</strong><p>Arthur Rocha</p><p><RatingsStar count={5}/></p></div> </SwiperSlide>
                     <SwiperSlide className='flex flex-col'> <div className='aspect-[55/90] object-contain'><img src="/img/books/a_vida_mentirosa_dos_adultos.png" alt="livros para crianças" className=' w-full h-full' /></div><div className='flex flex-col'>
-                        <strong className='text-gray-900 mt-1 text-base'>A vida mentirosa dos adultos</strong></div> </SwiperSlide>
+                        <strong className='text-gray-900 mt-1 text-base'>A vida mentirosa dos adultos</strong><p>William Martins</p><p><RatingsStar count={1}/></p></div> </SwiperSlide>
                     <SwiperSlide className='flex flex-col'> <div className='aspect-[55/90] object-contain'><img src="/img/books/a_vida_mentirosa_dos_adultos.png" alt="livros para crianças" className=' w-full h-full' /></div><div className='flex flex-col'>
-                        <strong className='text-gray-900 mt-1 text-base'>A vida mentirosa dos adultos</strong></div> </SwiperSlide>
+                        <strong className='text-gray-900 mt-1 text-base'>A vida mentirosa dos adultos</strong><p>Rafael Barbato</p><p><RatingsStar count={2}/></p></div> </SwiperSlide>
 
 
                 </Swiper>
@@ -67,23 +67,23 @@ export const SectionHomeContent = () => {
 
                 <Swiper slidesPerView={8} spaceBetween={12}>
                     <SwiperSlide className='flex flex-col'> <div className='aspect-[55/90] object-contain'><img src="/img/books/a_vida_mentirosa_dos_adultos.png" alt="livros para crianças" className=' w-full h-full' /></div><div className='flex flex-col'>
-                        <strong className='text-gray-900 mt-1 text-base'>A vida mentirosa dos adultos</strong></div> </SwiperSlide>
+                        <strong className='text-gray-900 mt-1 text-base'>A vida mentirosa dos adultos</strong><p>Rafael Barbato</p><p><RatingsStar count={1}/></p></div> </SwiperSlide>
                     <SwiperSlide className='flex flex-col'> <div className='aspect-[55/90] object-contain'><img src="/img/books/a_vida_mentirosa_dos_adultos.png" alt="livros para crianças" className=' w-full h-full' /></div><div className='flex flex-col'>
-                        <strong className='text-gray-900 mt-1 text-base'>A vida mentirosa dos adultos</strong></div> </SwiperSlide>
+                        <strong className='text-gray-900 mt-1 text-base'>A vida mentirosa dos adultos</strong><p>Rafael Barbato</p><p><RatingsStar count={5}/></p></div> </SwiperSlide>
                     <SwiperSlide className='flex flex-col'> <div className='aspect-[55/90] object-contain'><img src="/img/books/a_vida_mentirosa_dos_adultos.png" alt="livros para crianças" className=' w-full h-full' /></div><div className='flex flex-col'>
-                        <strong className='text-gray-900 mt-1 text-base'>A vida mentirosa dos adultos</strong></div> </SwiperSlide>
+                        <strong className='text-gray-900 mt-1 text-base'>A vida mentirosa dos adultos</strong><p>Rafael Barbato</p><p><RatingsStar count={2}/></p></div> </SwiperSlide>
                     <SwiperSlide className='flex flex-col'> <div className='aspect-[55/90] object-contain'><img src="/img/books/a_vida_mentirosa_dos_adultos.png" alt="livros para crianças" className=' w-full h-full' /></div><div className='flex flex-col'>
-                        <strong className='text-gray-900 mt-1 text-base'>A vida mentirosa dos adultos</strong></div> </SwiperSlide>
+                        <strong className='text-gray-900 mt-1 text-base'>A vida mentirosa dos adultos</strong><p>Rafael Barbato</p><p><RatingsStar count={4}/></p></div> </SwiperSlide>
                     <SwiperSlide className='flex flex-col'> <div className='aspect-[55/90] object-contain'><img src="/img/books/a_vida_mentirosa_dos_adultos.png" alt="livros para crianças" className=' w-full h-full' /></div><div className='flex flex-col'>
-                        <strong className='text-gray-900 mt-1 text-base'>A vida mentirosa dos adultos</strong></div> </SwiperSlide>
+                        <strong className='text-gray-900 mt-1 text-base'>A vida mentirosa dos adultos</strong><p>Rafael Barbato</p><p><RatingsStar count={2}/></p></div> </SwiperSlide>
                     <SwiperSlide className='flex flex-col'> <div className='aspect-[55/90] object-contain'><img src="/img/books/a_vida_mentirosa_dos_adultos.png" alt="livros para crianças" className=' w-full h-full' /></div><div className='flex flex-col'>
-                        <strong className='text-gray-900 mt-1 text-base'>A vida mentirosa dos adultos</strong></div> </SwiperSlide>
+                        <strong className='text-gray-900 mt-1 text-base'>A vida mentirosa dos adultos</strong><p>Rafael Barbato</p><p><RatingsStar count={3}/></p></div> </SwiperSlide>
                     <SwiperSlide className='flex flex-col'> <div className='aspect-[55/90] object-contain'><img src="/img/books/a_vida_mentirosa_dos_adultos.png" alt="livros para crianças" className=' w-full h-full' /></div><div className='flex flex-col'>
-                        <strong className='text-gray-900 mt-1 text-base'>A vida mentirosa dos adultos</strong></div> </SwiperSlide>
+                        <strong className='text-gray-900 mt-1 text-base'>A vida mentirosa dos adultos</strong><p>Rafael Barbato</p><p><RatingsStar count={4}/></p></div> </SwiperSlide>
                     <SwiperSlide className='flex flex-col'> <div className='aspect-[55/90] object-contain'><img src="/img/books/a_vida_mentirosa_dos_adultos.png" alt="livros para crianças" className=' w-full h-full' /></div><div className='flex flex-col'>
-                        <strong className='text-gray-900 mt-1 text-base'>A vida mentirosa dos adultos</strong></div> </SwiperSlide>
+                        <strong className='text-gray-900 mt-1 text-base'>A vida mentirosa dos adultos</strong><p>Rafael Barbato</p><p><RatingsStar count={1}/></p></div> </SwiperSlide>
                     <SwiperSlide className='flex flex-col'> <div className='aspect-[55/90] object-contain'><img src="/img/books/a_vida_mentirosa_dos_adultos.png" alt="livros para crianças" className=' w-full h-full' /></div><div className='flex flex-col'>
-                        <strong className='text-gray-900 mt-1 text-base'>A vida mentirosa dos adultos</strong></div> </SwiperSlide>
+                        <strong className='text-gray-900 mt-1 text-base'>A vida mentirosa dos adultos</strong><p>Rafael Barbato</p><p><RatingsStar count={5}/></p></div> </SwiperSlide>
 
 
                 </Swiper>

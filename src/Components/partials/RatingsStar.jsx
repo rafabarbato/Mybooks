@@ -1,4 +1,4 @@
-export const RatingsStar = ({ count }) => {
+export const RatingsStar = ({ count, name }) => {
   return (
     <>
       <div className="rating">
@@ -7,7 +7,7 @@ export const RatingsStar = ({ count }) => {
             <input
               key={item}
               type="radio"
-              name="rating-2"
+              name={name}
               className="mask mask-star-2 bg-orange-400 w-5"
               checked={count == item + 1}
             />
