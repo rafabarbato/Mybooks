@@ -139,7 +139,7 @@ export const SectionHomeContent = () => {
       <div className="divide-x-2 divider"></div>
       <HeaderTitle text="Lançamentos " />
       <div className="flex mt-4">
-        <Swiper slidesPerView={8} spaceBetween={12}>
+        <Swiper slidesPerView={9} spaceBetween={12}>
           {books &&
             books?.items?.map((book) => {
               return (
