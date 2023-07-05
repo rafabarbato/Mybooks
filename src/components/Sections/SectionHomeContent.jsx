@@ -14,6 +14,12 @@ export const SectionHomeContent = () => {
     return titulo;
   }
 
+  function ImproveQualityOfBookImage(url){
+    let imgZoom = url.replace('zoom=1', 'zoom=3')
+  
+    return imgZoom
+  }
+
   
 
   async function getBooks() {
@@ -150,7 +156,7 @@ export const SectionHomeContent = () => {
                       <img
                         src={
                           book.volumeInfo.imageLinks
-                            ? book.volumeInfo.imageLinks.thumbnail
+                            ? ImproveQualityOfBookImage(book.volumeInfo.imageLinks.thumbnail)
                             : '/img/books/no_cover_thumb.png'
                         }
                         alt={`${book.volumeInfo.title}`}
