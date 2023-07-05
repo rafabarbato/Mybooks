@@ -1,5 +1,3 @@
-import { Icon } from '@iconify/react'
-import React from 'react'
 import { ItemCategorie } from '../partials/ItemCategorie'
 
 export const SideBar = () => {

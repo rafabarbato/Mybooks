@@ -18,7 +18,7 @@ export const SectionHomeContent = () => {
   async function getBooks() {
     try {
       const response = await fetch(
-        'https://www.googleapis.com/books/v1/volumes?q=search+terms',
+        'https://www.googleapis.com/books/v1/volumes?q=inauthor:"Masashi+Kishimoto"&printType=books',
       );
 
       const data = await response.json();
@@ -137,7 +137,7 @@ export const SectionHomeContent = () => {
         </Swiper>
       </div>
       <div className="divide-x-2 divider"></div>
-      <HeaderTitle text="Lançamentos " />
+      <HeaderTitle text="Lançamentos" />
       <div className="flex mt-4">
         <Swiper slidesPerView={8} spaceBetween={12}>
           {books &&
@@ -170,9 +170,9 @@ export const SectionHomeContent = () => {
                         : 'Desconhecido'}
                     </p> */}
                     <p>
-                      <RatingsStar count={5} />{' '}
+                      <RatingsStar count={book.volumeInfo.averageRating ? Math.round(book.volumeInfo.averageRating) : 1} />
                     </p>
-                  </div>{' '}
+                  </div>
                 </SwiperSlide>
               );
             })}
