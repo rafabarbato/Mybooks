@@ -1,22 +1,24 @@
-import { HeaderTitle } from "../HeaderTitle";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { RatingsStar } from "../partials/RatingsStar";
-import { useEffect, useState } from "react";
-import "swiper/css";
+import { HeaderTitle } from '../HeaderTitle';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { RatingsStar } from '../partials/RatingsStar';
+import { useEffect, useState } from 'react';
+import 'swiper/css';
 export const SectionHomeContent = () => {
   const [books, setBooks] = useState([]);
 
   function limitarCaracteres(titulo, limite) {
     if (titulo.length > limite) {
-      titulo = titulo.substring(0, limite) + "...";
+      titulo = titulo.substring(0, limite) + '...';
     }
     return titulo;
   }
 
+  
+
   async function getBooks() {
     try {
       const response = await fetch(
-        "https://www.googleapis.com/books/v1/volumes?q=search+terms"
+        'https://www.googleapis.com/books/v1/volumes?q=search+terms',
       );
 
       const data = await response.json();
@@ -37,7 +39,7 @@ export const SectionHomeContent = () => {
       <div className="flex  mt-4">
         <Swiper slidesPerView={6} spaceBetween={12}>
           <SwiperSlide>
-            {" "}
+            {' '}
             <img
               src="/img/categories/livros_infantis.png"
               alt="livros para crianças"
@@ -45,7 +47,7 @@ export const SectionHomeContent = () => {
             />
           </SwiperSlide>
           <SwiperSlide>
-            {" "}
+            {' '}
             <img
               src="/img/categories/livros_na_categoria_medieval.png"
               alt="livros para crianças"
@@ -53,7 +55,7 @@ export const SectionHomeContent = () => {
             />
           </SwiperSlide>
           <SwiperSlide>
-            {" "}
+            {' '}
             <img
               src="/img/categories/livros_para_relaxar.png"
               alt="livros para crianças"
@@ -61,7 +63,7 @@ export const SectionHomeContent = () => {
             />
           </SwiperSlide>
           <SwiperSlide>
-            {" "}
+            {' '}
             <img
               src="/img/categories/livros_relax.png"
               alt="livros para crianças"
@@ -69,7 +71,7 @@ export const SectionHomeContent = () => {
             />
           </SwiperSlide>
           <SwiperSlide>
-            {" "}
+            {' '}
             <img
               src="/img/categories/livros.png"
               alt="livros para crianças"
@@ -77,7 +79,7 @@ export const SectionHomeContent = () => {
             />
           </SwiperSlide>
           <SwiperSlide>
-            {" "}
+            {' '}
             <img
               src="/img/categories/livros_infantis.png"
               alt="livros para crianças"
@@ -85,7 +87,7 @@ export const SectionHomeContent = () => {
             />
           </SwiperSlide>
           <SwiperSlide>
-            {" "}
+            {' '}
             <img
               src="/img/categories/livros_infantis.png"
               alt="livros para crianças"
@@ -93,7 +95,7 @@ export const SectionHomeContent = () => {
             />
           </SwiperSlide>
           <SwiperSlide>
-            {" "}
+            {' '}
             <img
               src="/img/categories/livros_na_categoria_medieval.png"
               alt="livros para crianças"
@@ -101,7 +103,7 @@ export const SectionHomeContent = () => {
             />
           </SwiperSlide>
           <SwiperSlide>
-            {" "}
+            {' '}
             <img
               src="/img/categories/livros_para_relaxar.png"
               alt="livros para crianças"
@@ -109,7 +111,7 @@ export const SectionHomeContent = () => {
             />
           </SwiperSlide>
           <SwiperSlide>
-            {" "}
+            {' '}
             <img
               src="/img/categories/livros_relax.png"
               alt="livros para crianças"
@@ -117,7 +119,7 @@ export const SectionHomeContent = () => {
             />
           </SwiperSlide>
           <SwiperSlide>
-            {" "}
+            {' '}
             <img
               src="/img/categories/livros.png"
               alt="livros para crianças"
@@ -125,7 +127,7 @@ export const SectionHomeContent = () => {
             />
           </SwiperSlide>
           <SwiperSlide>
-            {" "}
+            {' '}
             <img
               src="/img/categories/livros_infantis.png"
               alt="livros para crianças"
@@ -138,62 +140,221 @@ export const SectionHomeContent = () => {
       <HeaderTitle text="Lançamentos " />
       <div className="flex mt-4">
         <Swiper slidesPerView={8} spaceBetween={12}>
-          {books &&  books?.items?.map(book => {
-            return <SwiperSlide key={book.id} className="flex flex-col">
-          
-            <div className="aspect-[55/90] object-contain">
-              <label htmlFor="my_modal_7" className="cursor-pointer">
-                <img
-                  src={book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : '/img/books/no_cover_thumb.png'}
-                  alt={`${book.volumeInfo.title}`}
-                  className=" w-full h-full"
-                />
-              </label>
-            </div>
-            <div className="flex flex-col">
-              <strong
-                className="text-gray-900 mt-1 text-base"
-                title={book.volumeInfo.title}
-              >
-                {limitarCaracteres(book.volumeInfo.title, 20)}
-              </strong>
-              <p>{book.volumeInfo.authors ? book.volumeInfo.authors : "Desconhecido"}</p>
-              <p>
-                <RatingsStar count={5} />{" "}
-              </p>
-       
-     </div>{" "}
-          </SwiperSlide>
-          })}
+          {books &&
+            books?.items?.map((book) => {
+              return (
+                <SwiperSlide key={book.id} className="flex flex-col">
+                  <div className="aspect-[55/90] object-contain">
+                    <label htmlFor="my_modal_7" className="cursor-pointer">
+                      <img
+                        src={
+                          book.volumeInfo.imageLinks
+                            ? book.volumeInfo.imageLinks.thumbnail
+                            : '/img/books/no_cover_thumb.png'
+                        }
+                        alt={`${book.volumeInfo.title}`}
+                        className=" w-full h-full"
+                      />
+                    </label>
+                  </div>
+                  <div className="flex flex-col">
+                    <strong
+                      className="text-gray-900 mt-1 text-base"
+                      title={book.volumeInfo.title}
+                    >
+                      {limitarCaracteres(book.volumeInfo.title, 20)}
+                    </strong>
+                    {/* <p>
+                      {book.volumeInfo.authors
+                        ? book.volumeInfo.authors
+                        : 'Desconhecido'}
+                    </p> */}
+                    <p>
+                      <RatingsStar count={5} />{' '}
+                    </p>
+                  </div>{' '}
+                </SwiperSlide>
+              );
+            })}
         </Swiper>
       </div>
-      <div className='divide-x-2 divider'></div>
-            <HeaderTitle text='Recentemente Adicionados' />
-            <div className='flex mt-4'>
-
-                <Swiper slidesPerView={8} spaceBetween={12}>
-                    <SwiperSlide className='flex flex-col'> <div className='aspect-[55/90] object-contain'><img src="/img/books/a_vida_mentirosa_dos_adultos.png" alt="livros para crianças" className=' w-full h-full' /></div><div className='flex flex-col'>
-                        <strong className='text-gray-900 mt-1 text-base'>A vida mentirosa dos adultos</strong><p>Rafael Barbato</p><p><RatingsStar count={1}/></p></div> </SwiperSlide>
-                    <SwiperSlide className='flex flex-col'> <div className='aspect-[55/90] object-contain'><img src="/img/books/a_vida_mentirosa_dos_adultos.png" alt="livros para crianças" className=' w-full h-full' /></div><div className='flex flex-col'>
-                        <strong className='text-gray-900 mt-1 text-base'>A vida mentirosa dos adultos</strong><p>Rafael Barbato</p><p><RatingsStar count={5}/></p></div> </SwiperSlide>
-                    <SwiperSlide className='flex flex-col'> <div className='aspect-[55/90] object-contain'><img src="/img/books/a_vida_mentirosa_dos_adultos.png" alt="livros para crianças" className=' w-full h-full' /></div><div className='flex flex-col'>
-                        <strong className='text-gray-900 mt-1 text-base'>A vida mentirosa dos adultos</strong><p>Rafael Barbato</p><p><RatingsStar count={2}/></p></div> </SwiperSlide>
-                    <SwiperSlide className='flex flex-col'> <div className='aspect-[55/90] object-contain'><img src="/img/books/a_vida_mentirosa_dos_adultos.png" alt="livros para crianças" className=' w-full h-full' /></div><div className='flex flex-col'>
-                        <strong className='text-gray-900 mt-1 text-base'>A vida mentirosa dos adultos</strong><p>Rafael Barbato</p><p><RatingsStar count={4}/></p></div> </SwiperSlide>
-                    <SwiperSlide className='flex flex-col'> <div className='aspect-[55/90] object-contain'><img src="/img/books/a_vida_mentirosa_dos_adultos.png" alt="livros para crianças" className=' w-full h-full' /></div><div className='flex flex-col'>
-                        <strong className='text-gray-900 mt-1 text-base'>A vida mentirosa dos adultos</strong><p>Rafael Barbato</p><p><RatingsStar count={2}/></p></div> </SwiperSlide>
-                    <SwiperSlide className='flex flex-col'> <div className='aspect-[55/90] object-contain'><img src="/img/books/a_vida_mentirosa_dos_adultos.png" alt="livros para crianças" className=' w-full h-full' /></div><div className='flex flex-col'>
-                        <strong className='text-gray-900 mt-1 text-base'>A vida mentirosa dos adultos</strong><p>Rafael Barbato</p><p><RatingsStar count={3}/></p></div> </SwiperSlide>
-                    <SwiperSlide className='flex flex-col'> <div className='aspect-[55/90] object-contain'><img src="/img/books/a_vida_mentirosa_dos_adultos.png" alt="livros para crianças" className=' w-full h-full' /></div><div className='flex flex-col'>
-                        <strong className='text-gray-900 mt-1 text-base'>A vida mentirosa dos adultos</strong><p>Rafael Barbato</p><p><RatingsStar count={4}/></p></div> </SwiperSlide>
-                    <SwiperSlide className='flex flex-col'> <div className='aspect-[55/90] object-contain'><img src="/img/books/a_vida_mentirosa_dos_adultos.png" alt="livros para crianças" className=' w-full h-full' /></div><div className='flex flex-col'>
-                        <strong className='text-gray-900 mt-1 text-base'>A vida mentirosa dos adultos</strong><p>Rafael Barbato</p><p><RatingsStar count={1}/></p></div> </SwiperSlide>
-                    <SwiperSlide className='flex flex-col'> <div className='aspect-[55/90] object-contain'><img src="/img/books/a_vida_mentirosa_dos_adultos.png" alt="livros para crianças" className=' w-full h-full' /></div><div className='flex flex-col'>
-                        <strong className='text-gray-900 mt-1 text-base'>A vida mentirosa dos adultos</strong><p>Rafael Barbato</p><p><RatingsStar count={5}/></p></div> </SwiperSlide>
-
-
-                </Swiper>
+      <div className="divide-x-2 divider"></div>
+      <HeaderTitle text="Recentemente Adicionados" />
+      <div className="flex mt-4">
+        <Swiper slidesPerView={8} spaceBetween={12}>
+          <SwiperSlide className="flex flex-col">
+            {' '}
+            <div className="aspect-[55/90] object-contain">
+              <img
+                src="/img/books/a_vida_mentirosa_dos_adultos.png"
+                alt="livros para crianças"
+                className=" w-full h-full"
+              />
             </div>
+            <div className="flex flex-col">
+              <strong className="text-gray-900 mt-1 text-base">
+                A vida mentirosa dos adultos
+              </strong>
+              <p>Rafael Barbato</p>
+              <p>
+                <RatingsStar count={1} />
+              </p>
+            </div>{' '}
+          </SwiperSlide>
+          <SwiperSlide className="flex flex-col">
+            {' '}
+            <div className="aspect-[55/90] object-contain">
+              <img
+                src="/img/books/a_vida_mentirosa_dos_adultos.png"
+                alt="livros para crianças"
+                className=" w-full h-full"
+              />
+            </div>
+            <div className="flex flex-col">
+              <strong className="text-gray-900 mt-1 text-base">
+                A vida mentirosa dos adultos
+              </strong>
+              <p>Rafael Barbato</p>
+              <p>
+                <RatingsStar count={5} />
+              </p>
+            </div>{' '}
+          </SwiperSlide>
+          <SwiperSlide className="flex flex-col">
+            {' '}
+            <div className="aspect-[55/90] object-contain">
+              <img
+                src="/img/books/a_vida_mentirosa_dos_adultos.png"
+                alt="livros para crianças"
+                className=" w-full h-full"
+              />
+            </div>
+            <div className="flex flex-col">
+              <strong className="text-gray-900 mt-1 text-base">
+                A vida mentirosa dos adultos
+              </strong>
+              <p>Rafael Barbato</p>
+              <p>
+                <RatingsStar count={2} />
+              </p>
+            </div>{' '}
+          </SwiperSlide>
+          <SwiperSlide className="flex flex-col">
+            {' '}
+            <div className="aspect-[55/90] object-contain">
+              <img
+                src="/img/books/a_vida_mentirosa_dos_adultos.png"
+                alt="livros para crianças"
+                className=" w-full h-full"
+              />
+            </div>
+            <div className="flex flex-col">
+              <strong className="text-gray-900 mt-1 text-base">
+                A vida mentirosa dos adultos
+              </strong>
+              <p>Rafael Barbato</p>
+              <p>
+                <RatingsStar count={4} />
+              </p>
+            </div>{' '}
+          </SwiperSlide>
+          <SwiperSlide className="flex flex-col">
+            {' '}
+            <div className="aspect-[55/90] object-contain">
+              <img
+                src="/img/books/a_vida_mentirosa_dos_adultos.png"
+                alt="livros para crianças"
+                className=" w-full h-full"
+              />
+            </div>
+            <div className="flex flex-col">
+              <strong className="text-gray-900 mt-1 text-base">
+                A vida mentirosa dos adultos
+              </strong>
+              <p>Rafael Barbato</p>
+              <p>
+                <RatingsStar count={2} />
+              </p>
+            </div>{' '}
+          </SwiperSlide>
+          <SwiperSlide className="flex flex-col">
+            {' '}
+            <div className="aspect-[55/90] object-contain">
+              <img
+                src="/img/books/a_vida_mentirosa_dos_adultos.png"
+                alt="livros para crianças"
+                className=" w-full h-full"
+              />
+            </div>
+            <div className="flex flex-col">
+              <strong className="text-gray-900 mt-1 text-base">
+                A vida mentirosa dos adultos
+              </strong>
+              <p>Rafael Barbato</p>
+              <p>
+                <RatingsStar count={3} />
+              </p>
+            </div>{' '}
+          </SwiperSlide>
+          <SwiperSlide className="flex flex-col">
+            {' '}
+            <div className="aspect-[55/90] object-contain">
+              <img
+                src="/img/books/a_vida_mentirosa_dos_adultos.png"
+                alt="livros para crianças"
+                className=" w-full h-full"
+              />
+            </div>
+            <div className="flex flex-col">
+              <strong className="text-gray-900 mt-1 text-base">
+                A vida mentirosa dos adultos
+              </strong>
+              <p>Rafael Barbato</p>
+              <p>
+                <RatingsStar count={4} />
+              </p>
+            </div>{' '}
+          </SwiperSlide>
+          <SwiperSlide className="flex flex-col">
+            {' '}
+            <div className="aspect-[55/90] object-contain">
+              <img
+                src="/img/books/a_vida_mentirosa_dos_adultos.png"
+                alt="livros para crianças"
+                className=" w-full h-full"
+              />
+            </div>
+            <div className="flex flex-col">
+              <strong className="text-gray-900 mt-1 text-base">
+                A vida mentirosa dos adultos
+              </strong>
+              <p>Rafael Barbato</p>
+              <p>
+                <RatingsStar count={1} />
+              </p>
+            </div>{' '}
+          </SwiperSlide>
+          <SwiperSlide className="flex flex-col">
+            {' '}
+            <div className="aspect-[55/90] object-contain">
+              <img
+                src="/img/books/a_vida_mentirosa_dos_adultos.png"
+                alt="livros para crianças"
+                className=" w-full h-full"
+              />
+            </div>
+            <div className="flex flex-col">
+              <strong className="text-gray-900 mt-1 text-base">
+                A vida mentirosa dos adultos
+              </strong>
+              <p>Rafael Barbato</p>
+              <p>
+                <RatingsStar count={5} />
+              </p>
+            </div>{' '}
+          </SwiperSlide>
+        </Swiper>
+      </div>
       <input type="checkbox" id="my_modal_7" className="modal-toggle" />
       <div className="modal">
         <div className="modal-box">

@@ -4,9 +4,9 @@
 @tailwind utilities;
 .main_container {
   width: 100%;
-  max-width: 1080px;
+  
   margin: 0 auto;
-
+  padding: 0 2rem;
   @media (max-width: 1199.98px) {
     max-width: 920px;
   }
