@@ -3,6 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { RatingsStar } from '../partials/RatingsStar';
 import { useEffect, useState } from 'react';
 import 'swiper/css';
+import { Icon } from '@iconify/react';
 export const SectionHomeContent = () => {
   const [books, setBooks] = useState([]);
 
@@ -18,7 +19,7 @@ export const SectionHomeContent = () => {
   async function getBooks() {
     try {
       const response = await fetch(
-        'https://www.googleapis.com/books/v1/volumes?q=search+terms',
+        'https://www.googleapis.com/books/v1/volumes?q=inauthor:"Masashi+Kishimoto"&printType=books',
       );
 
       const data = await response.json();
@@ -137,7 +138,7 @@ export const SectionHomeContent = () => {
         </Swiper>
       </div>
       <div className="divide-x-2 divider"></div>
-      <HeaderTitle text="Lançamentos " />
+      <HeaderTitle text="Lançamentos" />
       <div className="flex mt-4">
         <Swiper slidesPerView={9} spaceBetween={12}>
           {books &&
@@ -145,7 +146,7 @@ export const SectionHomeContent = () => {
               return (
                 <SwiperSlide key={book.id} className="flex flex-col">
                   <div className="aspect-[55/90] object-contain">
-                    <label htmlFor="my_modal_7" className="cursor-pointer">
+                    
                       <img
                         src={
                           book.volumeInfo.imageLinks
@@ -155,7 +156,7 @@ export const SectionHomeContent = () => {
                         alt={`${book.volumeInfo.title}`}
                         className=" w-full h-full"
                       />
-                    </label>
+                   
                   </div>
                   <div className="flex flex-col">
                     <strong
@@ -170,9 +171,9 @@ export const SectionHomeContent = () => {
                         : 'Desconhecido'}
                     </p> */}
                     <p>
-                      <RatingsStar count={5} />{' '}
+                      {book.volumeInfo?.averageRating ? <RatingsStar count={book.volumeInfo.averageRating ? Math.round(book.volumeInfo.averageRating) : 1}    /> : <span className='flex items-center'><Icon icon="iconamoon:unavailable" /><p className='ml-1'> Sem avaliação</p></span> }
                     </p>
-                  </div>{' '}
+                  </div>
                 </SwiperSlide>
               );
             })}
@@ -355,14 +356,14 @@ export const SectionHomeContent = () => {
           </SwiperSlide>
         </Swiper>
       </div>
-      <input type="checkbox" id="my_modal_7" className="modal-toggle" />
+      {/* <input type="checkbox" id="my_modal_7" className="modal-toggle" />
       <div className="modal">
         <div className="modal-box">
           <h3 className="text-lg font-bold">Hello!</h3>
           <p className="py-4">HIDDEN MODAL</p>
         </div>
         <label className="modal-backdrop" htmlFor="my_modal_7"></label>
-      </div>
+      </div> */}
     </div>
   );
 };

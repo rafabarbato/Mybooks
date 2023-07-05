@@ -62,7 +62,7 @@ export const Navbar = () => {
           >
             {searchData?.items?.map((book) => {
               return (
-                <li>
+                <li key={book.id}>
                   <a className="">
                     {' '}
                     <img

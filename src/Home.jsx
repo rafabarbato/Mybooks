@@ -1,6 +1,6 @@
 import React from 'react'
-import { SideBar } from './Components/SIdebar'
-import { SectionHomeContent } from './Components/Sections/SectionHomeContent'
+import { SideBar } from './components/SIdebar'
+import { SectionHomeContent } from './components/Sections/SectionHomeContent'
 
 export const Home = () => {
     return (
