@@ -6,6 +6,7 @@ import 'swiper/css';
 import { Icon } from '@iconify/react';
 export const SectionHomeContent = () => {
   const [books, setBooks] = useState([]);
+  const [booksDataByAuthor, setBooksDataByAuthor] = useState([]);
 
   function limitarCaracteres(titulo, limite) {
     if (titulo.length > limite) {
@@ -29,15 +30,19 @@ export const SectionHomeContent = () => {
       );
 
       const data = await response.json();
-      setBooks(data);
-      console.log(data);
+      return data
     } catch (erro) {
       console.log(erro);
     }
   }
 
+  async function init(){
+    setBooks(await getBooksByAuthor("Masashi+Kishimoto"));
+    setBooksDataByAuthor(await getBooksByAuthor("Eiichiro+Oda"));
+  }
+
   useEffect(() => {
-    getBooksByAuthor("Masashi+Kishimoto");
+    init()
   }, []);
 
   return (
@@ -189,8 +194,8 @@ export const SectionHomeContent = () => {
       <HeaderTitle text="Recentemente Adicionados" />
       <div className="flex mt-4">
         <Swiper slidesPerView={9} spaceBetween={12}>
-          {books &&
-            books?.items?.map((book) => {
+          {booksDataByAuthor &&
+            booksDataByAuthor?.items?.map((book) => {
               return (
                 <SwiperSlide key={book.id} className="flex flex-col">
                   <div className="aspect-[55/90] object-contain">
