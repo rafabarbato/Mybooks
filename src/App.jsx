@@ -1,6 +1,6 @@
 import { Routes, Route, BrowserRouter } from "react-router-dom"
 import { Home } from "./Home"
-import { BookDetails } from './BookDetails'
+import BookDetails  from './BookDetails'
 function App() {
 
 

@@ -39,7 +39,7 @@ export const Navbar = () => {
   }, [searchDebounce]);
 
   return (
-    <header className="bg-white shadow-md h-auto w-full py-1 fixed z-40">
+    <header className="bg-white shadow-md h-auto w-full top-0 py-1 fixed z-40">
       <nav className=" flex main_container justify-between">
         <div className="flex items-center justify-items-start relative">
           <img src="/svg/logo.svg" alt="logo mybooks" className="w-44" />
