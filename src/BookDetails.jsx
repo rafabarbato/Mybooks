@@ -9,7 +9,7 @@ const BookDetails = () => {
   }
   return (
     <main className=" mt-24 ">
-      <div className="max-w-[1200px] mx-auto grid md:grid-cols-5 lg:grid-cols-7">
+      <div className="max-w-[1200px] mx-auto grid md:grid-cols-5 lg:grid-cols-7 gap-20">
         <section className="col-span-5">
           <div className="text-sm breadcrumbs">
             <ul>
@@ -45,7 +45,7 @@ const BookDetails = () => {
               </div>
               <h2 className="font-bold text-xl mt-2">Descrição</h2>
               <article
-                className={`space-y-3 mt-2 transition-all ease-in-out duration-1000  ${
+                className={`space-y-3 mt-2 transition-all ease-in-out duration-1000 text-justify  ${
                   showMore ? "max-h-[70px]" : "max-h-full"
                 } overflow-hidden`}
               >
