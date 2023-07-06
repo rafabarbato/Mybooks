@@ -2,9 +2,11 @@ import { Icon } from '@iconify/react';
 import { useState } from 'react';
 
 const BookDetails = () => {
-  const { showMore, setShowMore } = useState(false);
+  const [ showMore, setShowMore ] = useState(false);
 
-
+  function handleShowMore() {
+    setShowMore(!showMore);
+  }
   return (
     <main className=" mt-24 ">
       <div className="max-w-[1200px] mx-auto grid md:grid-cols-5 lg:grid-cols-7">
@@ -42,7 +44,7 @@ const BookDetails = () => {
                 </button>
               </div>
               <h2 className="font-bold text-xl mt-2">Descrição</h2>
-              <article className={`space-y-3 mt-2 ${showMore && 'max-h-[200px]'}`}>
+              <article className={`space-y-3 mt-2 transition-all ease-in-out duration-1000  ${showMore ? 'max-h-[70px]' : 'max-h-full'} overflow-hidden`}>
                 <p>
                   Charles Duhigg, repórter investigativo do New York Times,
                   mostra que a chave para o sucesso é entender como os hábitos
@@ -60,11 +62,16 @@ const BookDetails = () => {
                 Durante os últimos dois anos, uma jovem transformou quase todos os aspectos de sua vida. Parou de fumar, correu uma maratona e foi promovida. Em um laboratório, neurologistas descobriram que os padrões
                 </p>
               </article>
-               <span className='flex items-center' onClick={()=> setShowMore(!state)}>
-               <Icon icon="ep:arrow-down-bold"  className={` transition-all ${showMore ? 'rotate-180' : 'rotate-0'}`}/>
-               <p className='ml-2'>Leia mais</p>
+               <span className='flex items-center' onClick={()=> handleShowMore()}>
+               <Icon icon="ep:arrow-down-bold"  className={` transition-all text-purple-600 ${showMore ? 'rotate-180' : 'rotate-0'}`}/>
+               <p className='ml-2 font-bold'>Leia mais</p>
                </span>
+                <div>
+                <h2 className="font-bold text-xl mt-2">Detalhes do Livro</h2>
+                <div>
 
+                </div>
+                </div>
             </div>
           </div>
         </section>
