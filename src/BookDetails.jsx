@@ -69,7 +69,14 @@ const BookDetails = () => {
                 <div>
                 <h2 className="font-bold text-xl mt-2">Detalhes do Livro</h2>
                 <div>
-
+                  <ul className='space-y-1 mt-1'>
+                    <li className='flex space-x-1'><strong>Editoria:</strong> <p>Objetiva; 1ª edição (24 setembro 2012)</p></li>
+                    <li className='flex space-x-1'><strong>Idioma:</strong> <p>Português</p></li>
+                    <li className='flex space-x-1'><strong>Capa comum:</strong> <p>408 páginas</p></li>
+                    <li className='flex space-x-1'><strong>ISBN-10:</strong> <p>8539004119</p></li>
+                    <li className='flex space-x-1'><strong>ISBN-13:</strong> <p>9788539004119</p></li>
+                    <li className='flex space-x-1'><strong>Dimensões:</strong> <p>22.8 x 16 x 2x4 cm</p></li>
+                  </ul>
                 </div>
                 </div>
             </div>
