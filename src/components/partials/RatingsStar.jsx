@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 export const RatingsStar = ({ count, name }) => {
   return (
     <>
@@ -16,4 +18,9 @@ export const RatingsStar = ({ count, name }) => {
       </div>
     </>
   );
+};
+
+RatingsStar.propTypes = {
+  count: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
 };
