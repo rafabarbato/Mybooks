@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { ButtonPrimary } from '../Buttons/ButtonPrimary';
 import { Icon } from '@iconify/react';
 import { useDebounce } from '../../hooks/useDebounce';
+import { Link } from 'react-router-dom';
 export const Navbar = () => {
   const [books, setBooks] = useState('');
   const [searchData, setSearchData] = useState('');
@@ -42,7 +43,9 @@ export const Navbar = () => {
     <header className="bg-white shadow-md h-auto w-full top-0 py-1 fixed z-40">
       <nav className=" flex main_container justify-between">
         <div className="flex items-center justify-items-start relative">
+          <a href='/'>
           <img src="/svg/logo.svg" alt="logo mybooks" className="w-44" />
+          </a>
           <div className='relative'>
 
 {loading ? <span className="loading loading-spinner loading-xs absolute left-3 top-[12px]"></span> : <Icon icon="fluent:search-12-filled" className='absolute left-3 top-[12px] text-base text-gray-400/60'/>}

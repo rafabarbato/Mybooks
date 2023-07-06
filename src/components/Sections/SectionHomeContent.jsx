@@ -26,7 +26,7 @@ export const SectionHomeContent = () => {
   async function getBooksByAuthor(author) {
     try {
       const response = await fetch(
-        `https://www.googleapis.com/books/v1/volumes?q=inauthor:"${author}"&printType=books`,
+        `https://www.googleapis.com/books/v1/volumes?q=inauthor:"${author}"&printType=books&langRestrict=pt`,
       );
 
       const data = await response.json();
@@ -37,8 +37,8 @@ export const SectionHomeContent = () => {
   }
 
   async function init(){
-    setBooks(await getBooksByAuthor("Masashi+Kishimoto"));
-    setBooksDataByAuthor(await getBooksByAuthor("Eiichiro+Oda"));
+    setBooks(await getBooksByAuthor("J. K. Rowling"));
+    setBooksDataByAuthor(await getBooksByAuthor("Masashi Kishimoto"));
   }
 
   useEffect(() => {
@@ -157,7 +157,7 @@ export const SectionHomeContent = () => {
               return (
                 <SwiperSlide key={book.id} className="flex flex-col">
                   <div className="aspect-[55/90] object-contain">
-                    
+                    <a href={`/book/${book.id}`}>
                       <img
                         src={
                           book.volumeInfo.imageLinks
@@ -167,7 +167,7 @@ export const SectionHomeContent = () => {
                         alt={`${book.volumeInfo.title}`}
                         className=" w-full h-full"
                       />
-                   
+                    </a>
                   </div>
                   <div className="flex flex-col">
                     <strong
@@ -199,7 +199,7 @@ export const SectionHomeContent = () => {
               return (
                 <SwiperSlide key={book.id} className="flex flex-col">
                   <div className="aspect-[55/90] object-contain">
-                    
+                  <a href={`/book/${book.id}`}>
                       <img
                         src={
                           book.volumeInfo.imageLinks
@@ -209,7 +209,7 @@ export const SectionHomeContent = () => {
                         alt={`${book.volumeInfo.title}`}
                         className=" w-full h-full"
                       />
-                   
+                   </a>
                   </div>
                   <div className="flex flex-col">
                     <strong
