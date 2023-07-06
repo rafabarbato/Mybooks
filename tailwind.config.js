@@ -5,8 +5,17 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
-  },
+    extend: {
+      colors: {
+        brand: {
+        purple: {
+          600: "#634D97",
+          }
+        }
+        }
+      }
+    },
+
   daisyui: {
     themes: ["light", "dark", "cupcake"],
   },
