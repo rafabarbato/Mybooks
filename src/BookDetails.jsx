@@ -219,7 +219,7 @@ const BookDetails = () => {
                         {booksByAuthor?.volumeInfo?.title}
                       </p>
                       <p className="text-gray-400">
-                        {booksByAuthor?.volumeInfo?.authors[0]}
+                        {booksByAuthor?.volumeInfo?.authors}
                       </p>
                     </div>
                   </div>
