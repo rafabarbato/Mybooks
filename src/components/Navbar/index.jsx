@@ -16,7 +16,7 @@ export const Navbar = () => {
       }
       setLoading(true)
       const response = await fetch(
-        `https://www.googleapis.com/books/v1/volumes?q=${searchDebounce}`,
+        `https://www.googleapis.com/books/v1/volumes?q=${searchDebounce}&printType=books&langRestrict=pt`,
       );
      
       const data = await response.json();
@@ -66,7 +66,7 @@ export const Navbar = () => {
             {searchData?.items?.map((book) => {
               return (
                 <li key={book.id}>
-                  <a className="">
+                  <a href={`/book/${book.id}`}>
                     {' '}
                     <img
                       src={

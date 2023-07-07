@@ -36,10 +36,10 @@ const BookDetails = () => {
           <div className="text-sm breadcrumbs">
             <ul>
               <li>
-                <a>Página Inicial</a>
+                <a href="/">Página Inicial</a>
               </li>
               <li>
-                <a>Detalhes do Livro</a>
+                <p>Detalhes do Livro</p>
               </li>
               <li>{books.volumeInfo?.title}</li>
             </ul>
@@ -56,12 +56,14 @@ const BookDetails = () => {
               <h1 className="text-3xl font-bold text-brand-purple-600">
                 {books.volumeInfo?.title}
               </h1>
-              <div className="flex items-center">
+              <div className="flex items-center justify-between ">
                 {" "}
-                <strong className="mr-2">Por</strong>{" "}
-                <p className="text-gray-600">
-                  Arthur Rocha | <strong>Português</strong>
+                  <div className="flex">
+                  <strong className="mr-1">Por</strong>{" "}
+                <p className="">
+                  {books?.volumeInfo?.authors[0]}
                 </p>{" "}
+                  </div>
                 {/* <div className="divider divider-horizontal"></div> */}{" "}
                 <button className="bg-brand-purple-600 py-[3px] px-2 rounded-md ml-3 text-white flex items-center">
                   {" "}
@@ -107,16 +109,19 @@ const BookDetails = () => {
                       </p>
                     </li>
                     <li className="flex space-x-1">
-                      <strong>Capa comum:</strong> <p>408 páginas</p>
+                      <strong>Quantidade de Páginas:</strong> <p>
+                        {books.volumeInfo?.pageCount}
+                      </p>
                     </li>
                     <li className="flex space-x-1">
-                      <strong>ISBN-10:</strong> <p>8539004119</p>
+                      <strong>ISBN-10:</strong> <p>
+                        {books.volumeInfo?.industryIdentifiers[0].identifier}
+                      </p>
                     </li>
                     <li className="flex space-x-1">
-                      <strong>ISBN-13:</strong> <p>9788539004119</p>
-                    </li>
-                    <li className="flex space-x-1">
-                      <strong>Dimensões:</strong> <p>22.8 x 16 x 2x4 cm</p>
+                      <strong>ISBN-13:</strong> <p>
+                        {books.volumeInfo?.industryIdentifiers[1].identifier}
+                      </p>
                     </li>
                   </ul>
                 </div>
