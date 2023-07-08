@@ -47,79 +47,31 @@ export const SectionHomeContent = () => {
 
   return (
     <div className="mt-14 p-5 overflow-y-auto w-full ml-64">
-      <HeaderTitle text="Descubra" />
+      <HeaderTitle text="Categorias" />
       <div className="flex  mt-4">
         <Swiper slidesPerView={6} spaceBetween={12}>
           <SwiperSlide>
             {' '}
             <img
-              src="/img/categories/livros_infantis.png"
+              src="/img/categories/animes.png"
               alt="livros para crianças"
-              className="aspect-square w-full h-full"
+              className="aspect-square w-full h-full object-cover"
             />
           </SwiperSlide>
           <SwiperSlide>
             {' '}
             <img
-              src="/img/categories/livros_na_categoria_medieval.png"
+              src="/img/categories/apocalipse.png"
               alt="livros para crianças"
-              className="aspect-square w-full h-full"
+              className="aspect-square w-full h-full object-cover"
             />
           </SwiperSlide>
           <SwiperSlide>
             {' '}
             <img
-              src="/img/categories/livros_para_relaxar.png"
+              src="/img/categories/mago.png"
               alt="livros para crianças"
-              className="aspect-square w-full h-full"
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            {' '}
-            <img
-              src="/img/categories/livros_relax.png"
-              alt="livros para crianças"
-              className="aspect-square w-full h-full"
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            {' '}
-            <img
-              src="/img/categories/livros.png"
-              alt="livros para crianças"
-              className="aspect-square w-full h-full"
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            {' '}
-            <img
-              src="/img/categories/livros_infantis.png"
-              alt="livros para crianças"
-              className="aspect-square w-full h-full"
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            {' '}
-            <img
-              src="/img/categories/livros_infantis.png"
-              alt="livros para crianças"
-              className="aspect-square w-full h-full"
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            {' '}
-            <img
-              src="/img/categories/livros_na_categoria_medieval.png"
-              alt="livros para crianças"
-              className="aspect-square w-full h-full"
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            {' '}
-            <img
-              src="/img/categories/livros_para_relaxar.png"
-              alt="livros para crianças"
-              className="aspect-square w-full h-full"
+              className="aspect-square w-full h-full object-cover"
             />
           </SwiperSlide>
           <SwiperSlide>
@@ -127,7 +79,7 @@ export const SectionHomeContent = () => {
             <img
               src="/img/categories/livros_relax.png"
               alt="livros para crianças"
-              className="aspect-square w-full h-full"
+              className="aspect-square w-full h-full object-cover"
             />
           </SwiperSlide>
           <SwiperSlide>
@@ -135,7 +87,7 @@ export const SectionHomeContent = () => {
             <img
               src="/img/categories/livros.png"
               alt="livros para crianças"
-              className="aspect-square w-full h-full"
+              className="aspect-square w-full h-full object-cover"
             />
           </SwiperSlide>
           <SwiperSlide>
@@ -143,7 +95,55 @@ export const SectionHomeContent = () => {
             <img
               src="/img/categories/livros_infantis.png"
               alt="livros para crianças"
-              className="aspect-square w-full h-full"
+              className="aspect-square w-full h-full object-cover"
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            {' '}
+            <img
+              src="/img/categories/livros_infantis.png"
+              alt="livros para crianças"
+              className="aspect-square w-full h-full object-cover"
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            {' '}
+            <img
+              src="/img/categories/livros_na_categoria_medieval.png"
+              alt="livros para crianças"
+              className="aspect-square w-full h-full object-cover"
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            {' '}
+            <img
+              src="/img/categories/livros_para_relaxar.png"
+              alt="livros para crianças"
+              className="aspect-square w-full h-full object-cover"
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            {' '}
+            <img
+              src="/img/categories/livros_relax.png"
+              alt="livros para crianças"
+              className="aspect-square w-full h-full object-cover"
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            {' '}
+            <img
+              src="/img/categories/livros.png"
+              alt="livros para crianças"
+              className="aspect-square w-full h-full object-cover"
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            {' '}
+            <img
+              src="/img/categories/livros_infantis.png"
+              alt="livros para crianças"
+              className="aspect-square w-full h-full object-cover"
             />
           </SwiperSlide>
         </Swiper>

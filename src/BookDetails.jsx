@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getBooksByAuthor } from './functions/getBooksByAuthor';
 import { ImproveQualityOfBookImage } from './functions/ImproveQualityOfBookImage';
+import { RatingsStar } from './components/partials/RatingsStar';
 const BookDetails = () => {
   const { id } = useParams();
   const [showMore, setShowMore] = useState(true);
@@ -13,7 +14,7 @@ const BookDetails = () => {
     getBooksById(id);
 
     if (books && books?.volumeInfo?.authors) {
-      handleGetBooksByAutho(books?.volumeInfo?.authors[0]);
+      
     }
   }, [id]);
 
@@ -59,6 +60,7 @@ const BookDetails = () => {
 
       const data = await response.json();
       setBooks(data);
+      await handleGetBooksByAutho(data?.volumeInfo?.authors[0]);
       return data;
     } catch (erro) {
       console.log(erro);
@@ -132,6 +134,7 @@ const BookDetails = () => {
                   </button>
                 )}
               </div>
+              { books?.volumeInfo?.averageRating && <span className='flex items-center'><RatingsStar count={books?.volumeInfo?.averageRating} /><p className='ml-2'>{books.volumeInfo.ratingsCount} {books.volumeInfo.ratingsCount > 1 ? 'Avaliações' : 'Avaliação'}</p></span>}
               <h2 className="font-bold text-xl mt-2">Descrição</h2>
               <article
                 dangerouslySetInnerHTML={{
@@ -197,7 +200,7 @@ const BookDetails = () => {
           <div>
             <h2 className="text-3xl font-bold">Livros Relacionados</h2>
             {books &&
-              booksByAuthor?.items?.map((booksByAuthor, index) => {
+             booksByAuthor?.items?.length > 0 ?  booksByAuthor?.items?.map((booksByAuthor, index) => {
                 if (index >= 5) return;
                 return (
                   <div className="gap-2 mt-2 flex" key={index}>
@@ -224,7 +227,7 @@ const BookDetails = () => {
                     </div>
                   </div>
                 );
-              })}
+              }) : <p className='text-gray-400'>Não há livros relacionados</p>}
 
             {/*  <div className="gap-2 mt-2 flex">
               <div className="aspect-[40/55] bg-gray-400 h-[110px]"></div>

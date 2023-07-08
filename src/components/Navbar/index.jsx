@@ -40,7 +40,7 @@ export const Navbar = () => {
   }, [searchDebounce]);
 
   return (
-    <header className="bg-white shadow-md min-h-[80px] w-full flex items-center top-0 py-1 fixed z-40 ">
+    <header className="bg-white shadow-md min-h-[60px] w-full flex items-center top-0 py-1 fixed z-40 ">
       <nav className=" flex main_container justify-between">
         <div className="flex items-center justify-items-start relative">
           <a href="/">
