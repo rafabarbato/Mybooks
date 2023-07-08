@@ -14,7 +14,6 @@ const BookDetails = () => {
     getBooksById(id);
 
     if (books && books?.volumeInfo?.authors) {
-      
     }
   }, [id]);
 
@@ -33,8 +32,7 @@ const BookDetails = () => {
   }
 
   function verifyFavoritesBooksById(id) {
-    
-    if(typeof localStorage.getItem('favoritos') === 'undefined') return true
+    if (typeof localStorage.getItem('favoritos') === 'undefined') return true;
 
     let localStorageFavoritos = JSON.parse(localStorage.getItem('favoritos'));
 
@@ -65,6 +63,12 @@ const BookDetails = () => {
     } catch (erro) {
       console.log(erro);
     }
+  }
+
+  function TextTooSpeech(){
+    
+    let text = new SpeechSynthesisUtterance(books.volumeInfo?.description);
+    window.speechSynthesis.speak(text)
   }
 
   function handleShowMore() {
@@ -120,7 +124,10 @@ const BookDetails = () => {
                     onClick={() => handleSaveBook(books.id)}
                   >
                     {' '}
-                    <Icon icon="material-symbols:bookmark-outline"  color='white'/>
+                    <Icon
+                      icon="material-symbols:bookmark-outline"
+                      color="white"
+                    />
                     Adicionar aos favoritos
                   </button>
                 ) : (
@@ -128,14 +135,28 @@ const BookDetails = () => {
                     className="bg-brand-purple-600 py-[3px] px-2 rounded-md ml-3 text-white flex items-center"
                     onClick={() => handleSaveBook(books.id)}
                   >
-                  
-                  <Icon icon="material-symbols:bookmark" color="white" />
-                Favorito
+                    <Icon icon="material-symbols:bookmark" color="white" />
+                    Favorito
                   </button>
                 )}
               </div>
-              { books?.volumeInfo?.averageRating && <span className='flex items-center'><RatingsStar count={books?.volumeInfo?.averageRating} /><p className='ml-2'>{books.volumeInfo.ratingsCount} {books.volumeInfo.ratingsCount > 1 ? 'Avaliações' : 'Avaliação'}</p></span>}
-              <h2 className="font-bold text-xl mt-2">Descrição</h2>
+              {books?.volumeInfo?.averageRating && (
+                <span className="flex items-center">
+                  <RatingsStar count={books?.volumeInfo?.averageRating} />
+                  <p className="ml-2">
+                    {books.volumeInfo.ratingsCount}{' '}
+                    {books.volumeInfo.ratingsCount > 1
+                      ? 'Avaliações'
+                      : 'Avaliação'}
+                  </p>
+                </span>
+              )}
+              <div className="flex items-center mt-2">
+                <h2 className="font-bold text-xl ">Descrição</h2>{' '}
+                <button className="flex items-center ml-4 border  px-4"  onClick={()=>TextTooSpeech()}>
+                  <Icon icon="ant-design:sound-filled" fontSize={20}  className='mr-1'/> Escutar
+                </button>
+              </div>
               <article
                 dangerouslySetInnerHTML={{
                   __html: books.volumeInfo?.description,
@@ -199,8 +220,8 @@ const BookDetails = () => {
         <section className="lg:col-span-2 col-span-5 max-w-full lg:max-w-[250px]">
           <div>
             <h2 className="text-3xl font-bold">Livros Relacionados</h2>
-            {books &&
-             booksByAuthor?.items?.length > 0 ?  booksByAuthor?.items?.map((booksByAuthor, index) => {
+            {books && booksByAuthor?.items?.length > 0 ? (
+              booksByAuthor?.items?.map((booksByAuthor, index) => {
                 if (index >= 5) return;
                 return (
                   <div className="gap-2 mt-2 flex" key={index}>
@@ -227,7 +248,10 @@ const BookDetails = () => {
                     </div>
                   </div>
                 );
-              }) : <p className='text-gray-400'>Não há livros relacionados</p>}
+              })
+            ) : (
+              <p className="text-gray-400">Não há livros relacionados</p>
+            )}
 
             {/*  <div className="gap-2 mt-2 flex">
               <div className="aspect-[40/55] bg-gray-400 h-[110px]"></div>
