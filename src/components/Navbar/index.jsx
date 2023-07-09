@@ -33,7 +33,7 @@ export const Navbar = () => {
     }
   }
 
-  console.log(googleCredential && decodedToken(googleCredential))
+  console.log(googleCredential && decodedToken)
 
   function limitarCaracteres(titulo, limite) {
     if (titulo.length > limite) {
