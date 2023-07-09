@@ -12,6 +12,7 @@ export const Navbar = () => {
   const [loading, setLoading] = useState(false);
   const searchDebounce = useDebounce(books, 1000);
   const { googleCredential } = useContext(GoogleContext)
+  console.log(googleCredential)
   const { decodedToken, isExpired } = useJwt(googleCredential);
   async function handleSearhBooks() {
     try {
