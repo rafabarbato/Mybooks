@@ -95,25 +95,30 @@ const BookDetails = () => {
       return ;
     }
     const voices =  speechSynthesis.getVoices();
-    console.log(voices);
+  
 
    
       setVoiceList(voices);
     
     
   }
-
+  
   function TextTooSpeech() {
     let text = new SpeechSynthesisUtterance(books.volumeInfo?.description);
     window.speechSynthesis.speak(text);
-    window.speechSynthesis.getVoices[selectVoice];
+   
     setSpeechActive((state) => !state);
   }
 
   function pauseSpeech() {
     const synth = window.speechSynthesis;
     setSpeechActive((state) => !state);
-    synth.pause();
+   
+    if(speechActive){
+      synth.paused;
+    } else {
+      synth.speak()
+    }
     console.log(synth)
   }
 
@@ -228,7 +233,7 @@ const BookDetails = () => {
                 {voiceList && <select
                   name="voice"
                   id=""
-                  onChange={(e)=> setSelectVoice(e.target.value)}
+                  onChange={(e)=> {setSelectVoice(e.target.value), console.log(selectVoice)}}
                   defaultValue={voiceList.filter(voice => voice.default)[0]}
                   className="max-w-[200px] p-[2px] ml-1 border bg-transparent"
                 >
@@ -237,7 +242,7 @@ const BookDetails = () => {
                       <option
                         key={voice.name}
                        
-                        value={voice.voiceURI}
+                        value={index}
                        
                         data-lang={voice.lang}
                         data-name={voice.name}
