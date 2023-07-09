@@ -3,7 +3,7 @@ import { ButtonPrimary } from '../Buttons/ButtonPrimary';
 import { Icon } from '@iconify/react';
 import { useDebounce } from '../../hooks/useDebounce';
 import { GoogleContext } from '../../Context/GoogleContext';
-import { useJwt } from "react-jwt";
+
 /* import { Link } from 'react-router-dom'; */
 
 export const Navbar = () => {
@@ -12,8 +12,8 @@ export const Navbar = () => {
   const [loading, setLoading] = useState(false);
   const searchDebounce = useDebounce(books, 1000);
   const { googleCredential } = useContext(GoogleContext)
-  console.log(googleCredential)
-  const { decodedToken, isExpired } = useJwt(googleCredential);
+
+
   async function handleSearhBooks() {
     try {
       if (books === '') {
@@ -34,7 +34,7 @@ export const Navbar = () => {
     }
   }
 
-  console.log(googleCredential && decodedToken)
+  console.log(googleCredential && googleCredential)
 
   function limitarCaracteres(titulo, limite) {
     if (titulo.length > limite) {

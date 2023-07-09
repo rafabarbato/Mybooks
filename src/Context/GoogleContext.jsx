@@ -2,7 +2,7 @@ import { createContext, useState } from 'react';
 
 
 export const GoogleContext = createContext({});
-export default function GoogleProvider({children}) {
+export  function GoogleProvider({children}) {
   
 
 
