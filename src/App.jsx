@@ -3,6 +3,7 @@ import { Home } from "./Home"
 import  Login  from "./login"
 import BookDetails  from './BookDetails'
 import { GoogleOAuthProvider } from "@react-oauth/google"
+import GoogleProvider from "./Context/GoogleContext"
 
 function App() {
 
@@ -11,11 +12,13 @@ function App() {
     <>
       <BrowserRouter>
       <GoogleOAuthProvider clientId="150494240816-64hjjooke2pes7i15icv5e37n3pd0gl9.apps.googleusercontent.com">
+        <GoogleProvider>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/book/:id" element={<BookDetails />} />
           <Route path="/login" element={<Login/>}/>
         </Routes>
+        </GoogleProvider>
         </GoogleOAuthProvider>
       </BrowserRouter>
     </>

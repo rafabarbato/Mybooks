@@ -1,15 +1,18 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { ButtonPrimary } from '../Buttons/ButtonPrimary';
 import { Icon } from '@iconify/react';
 import { useDebounce } from '../../hooks/useDebounce';
-import { Link } from 'react-router-dom';
+import { GoogleContext } from '../../Context/GoogleContext';
+import { useJwt } from "react-jwt";
+/* import { Link } from 'react-router-dom'; */
 
 export const Navbar = () => {
   const [books, setBooks] = useState('');
   const [searchData, setSearchData] = useState('');
   const [loading, setLoading] = useState(false);
   const searchDebounce = useDebounce(books, 1000);
-
+  const { googleCredential } = useContext(GoogleContext)
+  const { decodedToken, isExpired } = useJwt(token);
   async function handleSearhBooks() {
     try {
       if (books === '') {
@@ -29,6 +32,8 @@ export const Navbar = () => {
       console.log(erro);
     }
   }
+
+  console.log(decodedToken(googleCredential))
 
   function limitarCaracteres(titulo, limite) {
     if (titulo.length > limite) {
