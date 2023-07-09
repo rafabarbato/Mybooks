@@ -3,6 +3,7 @@ import { ButtonPrimary } from '../Buttons/ButtonPrimary';
 import { Icon } from '@iconify/react';
 import { useDebounce } from '../../hooks/useDebounce';
 import { Link } from 'react-router-dom';
+
 export const Navbar = () => {
   const [books, setBooks] = useState('');
   const [searchData, setSearchData] = useState('');
@@ -91,7 +92,9 @@ export const Navbar = () => {
           </ul>
         </div>
         <div className="items-center space-x-4 md:flex hidden">
-          <ButtonPrimary text="Cadastrar-se | Login" />
+          <a href="/login">
+            <ButtonPrimary text="Cadastrar-se | Login" />
+          </a>
           <Icon
             icon="basil:user-solid"
             className="w-12  h-fit aspect-square border rounded-full  "
