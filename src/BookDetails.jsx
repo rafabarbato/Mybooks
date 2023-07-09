@@ -94,6 +94,11 @@ const BookDetails = () => {
     if (typeof speechSynthesis === 'undefined') {
       return ;
     }
+    const voices =  speechSynthesis.getVoices();
+    console.log(voices);
+
+   
+      setVoiceList(voices);
     
     
   }
