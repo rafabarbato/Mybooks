@@ -14,6 +14,7 @@ const Login = () => {
          
           onSuccess={(credentialResponse) => {
             navigate('/')
+            console.log(credentialResponse)
             setGoogleCrediential(credentialResponse.credential)
            
           }}
