@@ -3,7 +3,7 @@ import { ItemCategorie } from '../partials/ItemCategorie'
 
 export const SideBar = () => {
     return (
-        <aside className=' py-20 px-10  h-screen border fixed z-30 bg-white'>
+        <aside className=' py-20 px-10  h-screen border fixed z-30 bg-white hidden md:block'>
             <h2 className='text-xl text-gray-800 font-bold mb-3'>Navegação</h2>
             <ul className='flex flex-col items-start'>
             <ItemCategorie icon={<Icon icon="carbon:categories" color="#8471b0" />} text="Mais bem avaliados" />

@@ -46,10 +46,27 @@ export const SectionHomeContent = () => {
   }, []);
 
   return (
-    <div className="mt-14 p-5 overflow-y-auto w-full ml-64">
+    <div className="mt-14 p-5 overflow-y-auto w-full ml-0 md:ml-64">
       <HeaderTitle text="Categorias" />
       <div className="flex  mt-4">
-        <Swiper slidesPerView={6} spaceBetween={12}>
+        <Swiper  spaceBetween={12} breakpoints={{
+            100:{
+              slidesPerView:2,
+              spaceBetween:12
+            },
+            700:{
+              slidesPerView:4,
+              spaceBetween:12
+            },
+            900:{
+              slidesPerView:4,
+              spaceBetween:12
+            },
+          1200:{
+            slidesPerView:7,
+            spaceBetween:12
+          }
+        }}>
           <SwiperSlide>
             {' '}
             <img
@@ -151,7 +168,23 @@ export const SectionHomeContent = () => {
       <div className="divide-x-2 divider"></div>
       <HeaderTitle text="Lançamentos" />
       <div className="flex mt-4">
-        <Swiper slidesPerView={9} spaceBetween={12}>
+        <Swiper slidesPerView={9} spaceBetween={12} breakpoints={{
+            100:{
+              slidesPerView:2,
+              spaceBetween:12
+            },
+            700:{
+              slidesPerView:4,
+              spaceBetween:12
+            },
+            900:{
+              slidesPerView:4,
+              spaceBetween:12
+            },
+          1200:{
+            slidesPerView:7,
+            spaceBetween:12
+          }}}>
           {books &&
             books?.items?.map((book) => {
               return (
@@ -193,7 +226,23 @@ export const SectionHomeContent = () => {
       <div className="divide-x-2 divider"></div>
       <HeaderTitle text="Recentemente Adicionados" />
       <div className="flex mt-4">
-        <Swiper slidesPerView={9} spaceBetween={12}>
+        <Swiper slidesPerView={9} spaceBetween={12} breakpoints={{
+            100:{
+              slidesPerView:2,
+              spaceBetween:12
+            },
+            700:{
+              slidesPerView:4,
+              spaceBetween:12
+            },
+            900:{
+              slidesPerView:4,
+              spaceBetween:12
+            },
+          1200:{
+            slidesPerView:7,
+            spaceBetween:12
+          }}}>
           {booksDataByAuthor &&
             booksDataByAuthor?.items?.map((book) => {
               return (

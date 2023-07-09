@@ -4,20 +4,33 @@ import { useParams } from 'react-router-dom';
 import { getBooksByAuthor } from './functions/getBooksByAuthor';
 import { ImproveQualityOfBookImage } from './functions/ImproveQualityOfBookImage';
 import { RatingsStar } from './components/partials/RatingsStar';
+import ISO6391 from 'iso-639-1';
+
 const BookDetails = () => {
   const { id } = useParams();
   const [showMore, setShowMore] = useState(true);
   const [booksByAuthor, setBooksByAuthor] = useState([]);
   const [books, setBooks] = useState([]);
-  const [hasSpeech, setHasSpeech] = useState(false)
-  const [speechActive, setSpeechActive] = useState(false)
-  const [ voiceList, setVoiceList] = useState([])
+  const [hasSpeech, setHasSpeech] = useState(false);
+  const [speechActive, setSpeechActive] = useState(false);
+  const [voiceList, setVoiceList] = useState(null);
+  const [selectVoice, setSelectVoice] = useState(null);
+  const [ refresh , setRefresh] = useState(false)
   useEffect(() => {
+    
     getBooksById(id);
-    hasSpeechSynthesis()
-    if (books && books?.volumeInfo?.authors) {
-    }
+    
+    hasSpeechSynthesis();
+  
+    
+   /*  if (books && books?.volumeInfo?.authors) {
+    } */
   }, [id]);
+
+  useEffect(()=>{
+    populateVoiceList();
+  }, [refresh])
+
 
   function handleSaveBook(id) {
     let localStorageFavoritos = localStorage.getItem('favoritos');
@@ -33,12 +46,12 @@ const BookDetails = () => {
     );
   }
 
-  function hasSpeechSynthesis(){
-    if ( 'speechSynthesis' in window ) {
-      setHasSpeech(true)
-      populateVoiceList()
+  function hasSpeechSynthesis() {
+    if ('speechSynthesis' in window) {
+      setHasSpeech(true);
+    
     } else {
-      setHasSpeech(false)
+      setHasSpeech(false);
     }
   }
 
@@ -62,11 +75,12 @@ const BookDetails = () => {
   }
 
   async function getBooksById(id) {
+   
     try {
       const response = await fetch(
         `https://www.googleapis.com/books/v1/volumes/${id}`,
       );
-
+      setRefresh(state => !state)
       const data = await response.json();
       setBooks(data);
       await handleGetBooksByAutho(data?.volumeInfo?.authors[0]);
@@ -75,41 +89,27 @@ const BookDetails = () => {
       console.log(erro);
     }
   }
-  
-function populateVoiceList() {
-  if (typeof speechSynthesis === "undefined" || !window.speechSynthesis.getVoices().length ) {
-    return;
-  }
 
-  const voices = speechSynthesis.getVoices();
-  console.log(voices)
-
-  setVoiceList(voices)
-  /* for (let i = 0; i < voices.length; i++) {
-    const option = document.createElement("option");
-    option.textContent = `${voices[i].name} (${voices[i].lang})`;
-
-    if (voices[i].default) {
-      option.textContent += " — DEFAULT";
-    } */
-
-    /* option.setAttribute("data-lang", voices[i].lang);
-    option.setAttribute("data-name", voices[i].name);
-    document.getElementById("voiceSelect").appendChild(option); */
-  }
-
-
-  function TextTooSpeech(){
+  function populateVoiceList() {
+    if (typeof speechSynthesis === 'undefined') {
+      return ;
+    }
     
-    let text = new SpeechSynthesisUtterance(books.volumeInfo?.description);
-    window.speechSynthesis.speak(text)
-    setSpeechActive(state => !state)
+    
   }
 
-  function pauseSpeech(){
-  const synth = window.speechSynthesis;
-  setSpeechActive(state => !state)
+  function TextTooSpeech() {
+    let text = new SpeechSynthesisUtterance(books.volumeInfo?.description);
+    window.speechSynthesis.speak(text);
+    window.speechSynthesis.getVoices[selectVoice];
+    setSpeechActive((state) => !state);
+  }
+
+  function pauseSpeech() {
+    const synth = window.speechSynthesis;
+    setSpeechActive((state) => !state);
     synth.pause();
+    console.log(synth)
   }
 
   function handleShowMore() {
@@ -194,18 +194,54 @@ function populateVoiceList() {
               )}
               <div className="flex items-center mt-2">
                 <h2 className="font-bold text-xl ">Descrição</h2>{' '}
-                { hasSpeech && (!speechActive ? <button className="flex items-center ml-4 border  px-4"  onClick={()=>TextTooSpeech()}>
-                  <Icon icon="ant-design:sound-filled" fontSize={20}  className='mr-1'/> Escutar
-                </button> : <button onClick={()=> pauseSpeech()} className="flex items-center ml-4 border  px-4"  >
-                  <Icon icon="material-symbols:no-sound-rounded" fontSize={20}  className='mr-1'/> Parar Leitura
-                </button>)}
-                <select name="" id="" className='max-w-[200px] p-[2px] ml-1 border bg-transparent'>
-                  {
-                    voiceList.map(voice => {
-                      return <option key={voice.name} value={voice.name} defaultValue={voice.default ? `${voice.name} --Padrão` : 'não encontrado'} data-lang={voice.lang} data-name={voice.name}>{voice.name}</option>
-                    })
-                  }
-                </select>
+                {hasSpeech &&
+                  (!speechActive ? (
+                    <button
+                      className="flex items-center ml-4 border  px-4"
+                      onClick={() => TextTooSpeech()}
+                    >
+                      <Icon
+                        icon="ant-design:sound-filled"
+                        fontSize={20}
+                        className="mr-1"
+                      />{' '}
+                      Escutar
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => pauseSpeech()}
+                      className="flex items-center ml-4 border  px-4"
+                    >
+                      <Icon
+                        icon="material-symbols:no-sound-rounded"
+                        fontSize={20}
+                        className="mr-1"
+                      />{' '}
+                      Parar Leitura
+                    </button>
+                  ))}
+                {voiceList && <select
+                  name="voice"
+                  id=""
+                  onChange={(e)=> setSelectVoice(e.target.value)}
+                  defaultValue={voiceList.filter(voice => voice.default)[0]}
+                  className="max-w-[200px] p-[2px] ml-1 border bg-transparent"
+                >
+                  { voiceList?.map((voice, index) => {
+                    return (
+                      <option
+                        key={voice.name}
+                       
+                        value={voice.voiceURI}
+                       
+                        data-lang={voice.lang}
+                        data-name={voice.name}
+                      >
+                        {voice.name}
+                      </option>
+                    );
+                  })}
+                </select>}
               </div>
               <article
                 dangerouslySetInnerHTML={{
@@ -233,8 +269,19 @@ function populateVoiceList() {
                   <ul className="space-y-1 mt-1">
                     <li className="flex space-x-1">
                       <strong>Categoria:</strong>{' '}
-                      <p className='text-gray-500'>
-                        {books.volumeInfo?.categories[0]}
+                      <p className="text-gray-500">
+                        {books?.volumeInfo?.categories && books?.volumeInfo?.categories[0]
+                          .split('/')
+                          .map((categorie) => {
+                            return (
+                              <span
+                                key={categorie}
+                                className="py-1 px-2 bg-gray-200 rounded-full text-sm  ml-2 first:ml-0"
+                              >
+                                {categorie}
+                              </span>
+                            );
+                          })}
                       </p>
                     </li>
                     <li className="flex space-x-1">
@@ -246,27 +293,27 @@ function populateVoiceList() {
                     <li className="flex space-x-1">
                       <strong>Idioma:</strong>{' '}
                       <p className="text-gray-500">
-                        {books.volumeInfo?.language === 'pt'
-                          ? 'Português'
-                          : books.volumeInfo?.language}
+                        {ISO6391.getName(
+                          books?.volumeInfo?.language.split('-')[0],
+                        )}
                       </p>
                     </li>
                     <li className="flex space-x-1">
                       <strong>Quantidade de Páginas:</strong>{' '}
                       <p className="text-gray-500">
-                        {books.volumeInfo?.pageCount}
+                        {books?.volumeInfo?.pageCount}
                       </p>
                     </li>
                     <li className="flex space-x-1">
                       <strong>ISBN-10:</strong>{' '}
                       <p className="text-gray-500">
-                        {books.volumeInfo?.industryIdentifiers[0].identifier}
+                        {books?.volumeInfo?.industryIdentifiers[0].identifier}
                       </p>
                     </li>
                     <li className="flex space-x-1">
                       <strong>ISBN-13:</strong>{' '}
                       <p className="text-gray-500">
-                        {books.volumeInfo?.industryIdentifiers[1].identifier}
+                        {books?.volumeInfo?.industryIdentifiers[1].identifier}
                       </p>
                     </li>
                   </ul>
