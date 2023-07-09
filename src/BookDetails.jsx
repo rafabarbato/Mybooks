@@ -231,10 +231,18 @@ function populateVoiceList() {
                 <h2 className="font-bold text-xl mt-2">Detalhes do Livro</h2>
                 <div>
                   <ul className="space-y-1 mt-1">
-                    {/*  <li className="flex space-x-1">
-                      <strong>Editoria:</strong>{' '}
-                      <p>Objetiva; 1ª edição (24 setembro 2012)</p>
-                    </li> */}
+                    <li className="flex space-x-1">
+                      <strong>Categoria:</strong>{' '}
+                      <p className='text-gray-500'>
+                        {books.volumeInfo?.categories[0]}
+                      </p>
+                    </li>
+                    <li className="flex space-x-1">
+                      <strong>Data de Publicação:</strong>{' '}
+                      <p className="text-gray-500">
+                        {books.volumeInfo?.publishedDate}
+                      </p>
+                    </li>
                     <li className="flex space-x-1">
                       <strong>Idioma:</strong>{' '}
                       <p className="text-gray-500">
