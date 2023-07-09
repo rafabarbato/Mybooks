@@ -9,10 +9,12 @@ const BookDetails = () => {
   const [showMore, setShowMore] = useState(true);
   const [booksByAuthor, setBooksByAuthor] = useState([]);
   const [books, setBooks] = useState([]);
-
+  const [hasSpeech, setHasSpeech] = useState(false)
+  const [speechActive, setSpeechActive] = useState(false)
+  const [ voiceList, setVoiceList] = useState([])
   useEffect(() => {
     getBooksById(id);
-
+    hasSpeechSynthesis()
     if (books && books?.volumeInfo?.authors) {
     }
   }, [id]);
@@ -29,6 +31,15 @@ const BookDetails = () => {
       'favoritos',
       JSON.stringify([...localStorageFavoritos, id]),
     );
+  }
+
+  function hasSpeechSynthesis(){
+    if ( 'speechSynthesis' in window ) {
+      setHasSpeech(true)
+      populateVoiceList()
+    } else {
+      setHasSpeech(false)
+    }
   }
 
   function verifyFavoritesBooksById(id) {
@@ -64,11 +75,41 @@ const BookDetails = () => {
       console.log(erro);
     }
   }
+  
+function populateVoiceList() {
+  if (typeof speechSynthesis === "undefined" || !window.speechSynthesis.getVoices().length ) {
+    return;
+  }
+
+  const voices = speechSynthesis.getVoices();
+  console.log(voices)
+
+  setVoiceList(voices)
+  /* for (let i = 0; i < voices.length; i++) {
+    const option = document.createElement("option");
+    option.textContent = `${voices[i].name} (${voices[i].lang})`;
+
+    if (voices[i].default) {
+      option.textContent += " — DEFAULT";
+    } */
+
+    /* option.setAttribute("data-lang", voices[i].lang);
+    option.setAttribute("data-name", voices[i].name);
+    document.getElementById("voiceSelect").appendChild(option); */
+  }
+
 
   function TextTooSpeech(){
     
     let text = new SpeechSynthesisUtterance(books.volumeInfo?.description);
     window.speechSynthesis.speak(text)
+    setSpeechActive(state => !state)
+  }
+
+  function pauseSpeech(){
+  const synth = window.speechSynthesis;
+  setSpeechActive(state => !state)
+    synth.pause();
   }
 
   function handleShowMore() {
@@ -153,9 +194,18 @@ const BookDetails = () => {
               )}
               <div className="flex items-center mt-2">
                 <h2 className="font-bold text-xl ">Descrição</h2>{' '}
-                <button className="flex items-center ml-4 border  px-4"  onClick={()=>TextTooSpeech()}>
+                { hasSpeech && (!speechActive ? <button className="flex items-center ml-4 border  px-4"  onClick={()=>TextTooSpeech()}>
                   <Icon icon="ant-design:sound-filled" fontSize={20}  className='mr-1'/> Escutar
-                </button>
+                </button> : <button onClick={()=> pauseSpeech()} className="flex items-center ml-4 border  px-4"  >
+                  <Icon icon="material-symbols:no-sound-rounded" fontSize={20}  className='mr-1'/> Parar Leitura
+                </button>)}
+                <select name="" id="" className='max-w-[200px] p-[2px] ml-1 border bg-transparent'>
+                  {
+                    voiceList.map(voice => {
+                      return <option key={voice.name} value={voice.name} defaultValue={voice.default ? `${voice.name} --Padrão` : 'não encontrado'} data-lang={voice.lang} data-name={voice.name}>{voice.name}</option>
+                    })
+                  }
+                </select>
               </div>
               <article
                 dangerouslySetInnerHTML={{
