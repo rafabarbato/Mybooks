@@ -1,7 +1,7 @@
 import { createContext, useState } from 'react';
 
 
-export const GoogleContext = createContext(null);
+export const GoogleContext = createContext({});
 export default function GoogleProvider({children}) {
   
 
