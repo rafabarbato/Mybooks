@@ -3,7 +3,7 @@ import { Home } from "./Home"
 import  Login  from "./login"
 import BookDetails  from './BookDetails'
 import { GoogleOAuthProvider } from "@react-oauth/google"
-import GoogleProvider from "./Context/GoogleContext"
+import {GoogleProvider} from "./Context/GoogleContext"
 
 function App() {
 
