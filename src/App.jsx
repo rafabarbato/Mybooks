@@ -5,10 +5,13 @@ import BookDetails  from './BookDetails'
 import { GoogleOAuthProvider } from "@react-oauth/google"
 import {GoogleProvider} from "./Context/GoogleContext"
 import { Toaster } from "react-hot-toast"
+import { useEffect } from "react"
 
 function App() {
 
-
+  useEffect(()=>{
+   
+  },[])
   return (
     <>
       <BrowserRouter>

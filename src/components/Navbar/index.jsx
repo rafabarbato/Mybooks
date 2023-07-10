@@ -16,6 +16,9 @@ export const Navbar = () => {
   const searchDebounce = useDebounce(books, 1000);
   const { googleCredential } = useContext(GoogleContext)
   const [refresh, setRefresh] = useState(false)
+
+  const userInfo = window.localStorage.getItem('userInfo') || '{}'
+
   function handleLogout(){
     setRefresh(state => !state)
     googleLogout()
@@ -53,6 +56,7 @@ export const Navbar = () => {
     return titulo;
   }
   useEffect(() => {
+    setRefresh(state => !state)
     handleSearhBooks();
   }, [searchDebounce]);
 
@@ -108,14 +112,14 @@ export const Navbar = () => {
           </ul>
         </div>
         <div className="items-center space-x-4 md:flex hidden">
-        {localStorage.getItem('userInfo') === '{}' &&   <a href="/login">
+        { userInfo == '{}' &&   <a href="/login">
             <ButtonPrimary text="Cadastrar-se | Login" />
           </a>}
-         {localStorage.getItem('userInfo') === '{}' ?  <Icon
+         { userInfo == '{}' ?  <Icon
             icon="basil:user-solid"
             className="w-12  h-fit aspect-square border rounded-full  "
           /> : <div className='flex items-center'>
-            <img className='max-w-[40px] block w-full h-full max-h-[40px] rounded-full aspect-square' src={JSON.parse(localStorage.getItem('userInfo')).picture} />
+            <img className='max-w-[40px] block w-full h-full max-h-[40px] rounded-full aspect-square' src={JSON.parse(localStorage.getItem('userInfo')).picture || 'https://cdn5.vectorstock.com/i/1000x1000/43/94/default-avatar-photo-placeholder-icon-grey-vector-38594394.jpg'} />
            <div className='flex flex-col ml-2'>
            <p className='text-gray-500 '>{JSON.parse(localStorage.getItem('userInfo')).email}</p>
             <small className='hover:underline cursor-pointer' onClick={handleLogout}>Fazer Logout</small>
