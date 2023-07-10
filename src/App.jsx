@@ -4,6 +4,7 @@ import  Login  from "./login"
 import BookDetails  from './BookDetails'
 import { GoogleOAuthProvider } from "@react-oauth/google"
 import {GoogleProvider} from "./Context/GoogleContext"
+import { Toaster } from "react-hot-toast"
 
 function App() {
 
@@ -18,6 +19,13 @@ function App() {
           <Route path="/book/:id" element={<BookDetails />} />
           <Route path="/login" element={<Login/>}/>
         </Routes>
+        <Toaster
+              toastOptions={{
+                style: {
+                  zIndex: 999999,
+                },
+              }}
+            />
         </GoogleProvider>
         </GoogleOAuthProvider>
       </BrowserRouter>

@@ -3,16 +3,26 @@ import { ButtonPrimary } from '../Buttons/ButtonPrimary';
 import { Icon } from '@iconify/react';
 import { useDebounce } from '../../hooks/useDebounce';
 import { GoogleContext } from '../../Context/GoogleContext';
+import { googleLogout } from '@react-oauth/google';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-hot-toast';
 
-/* import { Link } from 'react-router-dom'; */
 
 export const Navbar = () => {
+
   const [books, setBooks] = useState('');
   const [searchData, setSearchData] = useState('');
   const [loading, setLoading] = useState(false);
   const searchDebounce = useDebounce(books, 1000);
   const { googleCredential } = useContext(GoogleContext)
-
+  const [refresh, setRefresh] = useState(false)
+  function handleLogout(){
+    setRefresh(state => !state)
+    googleLogout()
+    localStorage.setItem('userInfo',JSON.stringify({}))
+    toast.success('Deslogado com sucesso!')
+    
+  }
 
   async function handleSearhBooks() {
     try {
@@ -98,13 +108,19 @@ export const Navbar = () => {
           </ul>
         </div>
         <div className="items-center space-x-4 md:flex hidden">
-          <a href="/login">
+        {localStorage.getItem('userInfo') === '{}' &&   <a href="/login">
             <ButtonPrimary text="Cadastrar-se | Login" />
-          </a>
-          <Icon
+          </a>}
+         {localStorage.getItem('userInfo') === '{}' ?  <Icon
             icon="basil:user-solid"
             className="w-12  h-fit aspect-square border rounded-full  "
-          />
+          /> : <div className='flex items-center'>
+            <img className='max-w-[40px] block w-full h-full max-h-[40px] rounded-full aspect-square' src={JSON.parse(localStorage.getItem('userInfo')).picture} />
+           <div className='flex flex-col ml-2'>
+           <p className='text-gray-500 '>{JSON.parse(localStorage.getItem('userInfo')).email}</p>
+            <small className='hover:underline cursor-pointer' onClick={handleLogout}>Fazer Logout</small>
+           </div>
+            </div>}
         </div>
       </nav>
     </header>

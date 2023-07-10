@@ -182,7 +182,7 @@ export const SectionHomeContent = () => {
               spaceBetween:12
             },
           1200:{
-            slidesPerView:7,
+            slidesPerView:8,
             spaceBetween:12
           }}}>
           {books &&
@@ -240,7 +240,7 @@ export const SectionHomeContent = () => {
               spaceBetween:12
             },
           1200:{
-            slidesPerView:7,
+            slidesPerView:8,
             spaceBetween:12
           }}}>
           {booksDataByAuthor &&

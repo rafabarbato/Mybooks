@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useGoogleLogin } from '@react-oauth/google';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
@@ -9,13 +9,26 @@ import { Icon } from '@iconify/react';
 import { useForm } from "react-hook-form";
 const Login = () => {
   const navigate = useNavigate();
-  const { register, handleSubmit,formState: { errors, isSubmitting } } = useForm();
-  const { setGoogleCrediential, googleCredential } = useContext(GoogleContext);
-
+  const { register, handleSubmit,formState: { errors } } = useForm();
+  const {  } = useContext(GoogleContext);
+  const [loading ,setLoading ] = useState(false)
+  const [ refresh, setRefresh] = useState(false)
   const login = useGoogleLogin({
-    onSuccess: (tokenResponse) => {
+    onSuccess: async (tokenResponse) => {
+    try{
+      setRefresh(state => !state)
       toast.success('Usuário logado com sucesso!');
-      setGoogleCrediential(tokenResponse.credential);
+      const userInfo = await fetch('https://www.googleapis.com/oauth2/v3/userinfo',{
+        headers: { Authorization : `Bearer ${tokenResponse.access_token}`}
+      })
+      const dataInfo = await userInfo.json()
+      console.log(dataInfo)
+      localStorage.setItem('userInfo',JSON.stringify(dataInfo))
+    }catch(error){
+      console.log(error)
+    }
+
+    
       navigate('/');
     },
     onError: (error) => {
@@ -24,8 +37,13 @@ const Login = () => {
     },
   });
 
-  const loginForm = (data) => {
-    console.log(data)
+  const loginForm =  (data) => {
+    setLoading(true)
+   setTimeout(()=>{
+    setLoading(false)
+      toast.success('Usuário logado com sucesso!');
+      navigate('/')
+    },3000)
 
   }
 
@@ -33,7 +51,7 @@ const Login = () => {
     <main className="flex items-center justify-center main_container ">
       <div className="mt-44">
         <form action="" onSubmit={handleSubmit(loginForm)} className="border  w-fit p-4 max-w-[500px]"> 
-          <button className='border p-3 flex items-center text-gray-500 rounded-md w-full' onClick={login}><Icon icon="devicon:google" fontSize={30} className="mr-2"/>Faça o login com google</button> 
+          <button type='button' className='border p-3 flex items-center text-gray-500 rounded-md w-full' onClick={login}><Icon icon="devicon:google" fontSize={30} className="mr-2"/>Faça o login com google</button> 
           <div className="divider h-[1px] text-gray-400">ou</div>
           <h2 className="text-left  text-gray-600">Fazer Login</h2>
           <div className="space-y-2">
@@ -59,7 +77,7 @@ const Login = () => {
               type="submit"
               className="p-3 bg-brand-purple-600 w-full text-white rounded-md flex justify-center items-center"
             >
-              {!isSubmitting ? 'Fazer Login' :  <span className="loading loading-spinner loading-xs absolute left-3 top-[12px]"></span>}
+              {!loading ? 'Fazer Login' :  <Icon icon="eos-icons:loading" fontSize={25}/>}
             </button>
           </div>
         </form>
