@@ -339,6 +339,7 @@ const BookDetails = () => {
               booksByAuthor?.items?.map((booksByAuthor, index) => {
                 if (index >= 5) return;
                 return (
+                  <a key={booksByAuthor.id} href={`/book/${booksByAuthor.id}`}>
                   <div className="gap-2 mt-2 flex" key={index}>
                     <div className={`aspect-[40/55]  h-[110px] flex`}>
                       <img
@@ -362,6 +363,7 @@ const BookDetails = () => {
                       </p>
                     </div>
                   </div>
+                  </a>
                 );
               })
             ) : (
