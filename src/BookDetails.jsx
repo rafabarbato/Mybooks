@@ -193,7 +193,7 @@ const BookDetails = () => {
               </div>
               {books?.volumeInfo?.averageRating && (
                 <span className="flex items-center">
-                  <RatingsStar count={books?.volumeInfo?.averageRating} />
+                  <RatingsStar count={books?.volumeInfo?.averageRating}/>
                   <p className="ml-2">
                     {books.volumeInfo.ratingsCount}{' '}
                     {books.volumeInfo.ratingsCount > 1
