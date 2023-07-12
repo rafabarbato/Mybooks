@@ -193,7 +193,7 @@ const BookDetails = () => {
               </div>
               {books?.volumeInfo?.averageRating && (
                 <span className="flex items-center">
-                  <RatingsStar count={books?.volumeInfo?.averageRating} />
+                  <RatingsStar count={books?.volumeInfo?.averageRating}/>
                   <p className="ml-2">
                     {books.volumeInfo.ratingsCount}{' '}
                     {books.volumeInfo.ratingsCount > 1
@@ -339,6 +339,7 @@ const BookDetails = () => {
               booksByAuthor?.items?.map((booksByAuthor, index) => {
                 if (index >= 5) return;
                 return (
+                  <a key={booksByAuthor.id} href={`/book/${booksByAuthor.id}`}>
                   <div className="gap-2 mt-2 flex" key={index}>
                     <div className={`aspect-[40/55]  h-[110px] flex`}>
                       <img
@@ -358,52 +359,16 @@ const BookDetails = () => {
                         {booksByAuthor?.volumeInfo?.title}
                       </p>
                       <p className="text-gray-400">
-                        {booksByAuthor?.volumeInfo?.authors}
+                        {booksByAuthor?.volumeInfo?.authors ? booksByAuthor?.volumeInfo?.authors[0] : "Autor Desconhecido"}
                       </p>
                     </div>
                   </div>
+                  </a>
                 );
               })
             ) : (
               <p className="text-gray-400">Não há livros relacionados</p>
             )}
-
-            {/*  <div className="gap-2 mt-2 flex">
-              <div className="aspect-[40/55] bg-gray-400 h-[110px]"></div>
-              <div className="flex flex-col">
-                <p className="font-bold">
-                  Mindset: A nova psicologia do sucesso
-                </p>
-                <p className="text-gray-400">Carol S. Dweck</p>
-              </div>
-            </div>
-            <div className="gap-2 mt-2 flex">
-              <div className="aspect-[40/55] bg-gray-400 h-[110px]"></div>
-              <div className="flex flex-col">
-                <p className="font-bold">
-                  Mindset: A nova psicologia do sucesso
-                </p>
-                <p className="text-gray-400">Carol S. Dweck</p>
-              </div>
-            </div>
-            <div className="gap-2 mt-2 flex">
-              <div className="aspect-[40/55] bg-gray-400 h-[110px]"></div>
-              <div className="flex flex-col">
-                <p className="font-bold">
-                  Mindset: A nova psicologia do sucesso
-                </p>
-                <p className="text-gray-400">Carol S. Dweck</p>
-              </div>
-            </div>
-            <div className="gap-2 mt-2 flex">
-              <div className="aspect-[40/55] bg-gray-400 h-[110px]"></div>
-              <div className="flex flex-col">
-                <p className="font-bold">
-                  Mindset: A nova psicologia do sucesso
-                </p>
-                <p className="text-gray-400">Carol S. Dweck</p>
-              </div>
-            </div> */}
           </div>
         </section>
       </div>

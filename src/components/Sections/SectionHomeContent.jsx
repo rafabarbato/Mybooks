@@ -267,11 +267,6 @@ export const SectionHomeContent = () => {
                     >
                       {limitarCaracteres(book.volumeInfo.title, 20)}
                     </strong>
-                    {/* <p>
-                      {book.volumeInfo.authors
-                        ? book.volumeInfo.authors
-                        : 'Desconhecido'}
-                    </p> */}
                     <p>
                       {book.volumeInfo?.averageRating ? <RatingsStar count={book.volumeInfo.averageRating ? Math.round(book.volumeInfo.averageRating) : 1}    /> : <span className='flex items-center'><Icon icon="iconamoon:unavailable" /><p className='ml-1'> Sem avaliação</p></span> }
                       </p>
@@ -281,14 +276,6 @@ export const SectionHomeContent = () => {
             })}
         </Swiper>
       </div>
-      {/* <input type="checkbox" id="my_modal_7" className="modal-toggle" />
-      <div className="modal">
-        <div className="modal-box">
-          <h3 className="text-lg font-bold">Hello!</h3>
-          <p className="py-4">HIDDEN MODAL</p>
-        </div>
-        <label className="modal-backdrop" htmlFor="my_modal_7"></label>
-      </div> */}
     </div>
   );
 };
