@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ButtonPrimary } from '../Buttons/ButtonPrimary';
 import { Icon } from '@iconify/react';
 import { useDebounce } from '../../hooks/useDebounce';
@@ -14,7 +14,7 @@ export const Navbar = () => {
   const [searchData, setSearchData] = useState('');
   const [loading, setLoading] = useState(false);
   const searchDebounce = useDebounce(books, 1000);
-  const { googleCredential } = useContext(GoogleContext)
+ 
   const [refresh, setRefresh] = useState(false)
 
   const userInfo = window.localStorage.getItem('userInfo') || '{}'
@@ -47,7 +47,7 @@ export const Navbar = () => {
     }
   }
 
-  console.log(googleCredential && googleCredential)
+
 
   function limitarCaracteres(titulo, limite) {
     if (titulo.length > limite) {
