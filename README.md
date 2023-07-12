@@ -13,6 +13,8 @@
 <h2 align=left>Tecnologias</h2>
 
 • React <br>
+• Tailwind CSS <br>
 • HTML <br>
 • JavaScript <br>
-• NextJS <br>
+• Vite <br> 
+• Vercel <br>
