@@ -18,3 +18,8 @@
 • JavaScript <br>
 • Vite <br> 
 • Vercel <br>
+
+<h2 align=left>Links do Projeto</h2>
+
+• Figma: https://www.figma.com/file/0SCBsCtcEIITzLKSfpzGuO/Mybooks-Figma-Project?type=design&node-id=0%3A1&mode=design&t=dXcpEhYNgFpWRA2a-1 <br>
+• Trello: https://trello.com/b/fSL9jgKd/mybooks <br>
